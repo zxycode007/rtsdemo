@@ -77,6 +77,12 @@ public class PriorityQueue<T> where T : new()
         return node.Value;
     }
 
+    public T Pick()
+    {
+        HeapNode<T> node = heap[1];
+        return node.Value;
+    }
+
     private bool Less(int i, int j)
     {
         return compareHandler(heap[i], heap[j]);

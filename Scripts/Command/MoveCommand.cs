@@ -7,6 +7,30 @@ public class MoveCommand : BaseCommand
     Vector3 m_curPos;
     Vector3 m_targetPos;
 
+    public Vector3 curPos
+    {
+        get
+        {
+            return m_curPos;
+        }
+        set
+        {
+            m_curPos = value;
+        }
+    }
+
+    public Vector3 targetPos
+    {
+        get
+        {
+            return m_targetPos;
+        }
+        set
+        {
+            m_targetPos = value;
+        }
+    }
+
 
     public MoveCommand()
     {
