@@ -64,12 +64,15 @@ public class BaseCommand
         }
     }
     
-    public virtual void OnEnter()
+    public virtual void run()
     {
 
     }
 
-    public virtual void OnExit()
+    public virtual void OnEnter()
+    { }
+
+    public virtual void OnLeave()
     {
 
     }

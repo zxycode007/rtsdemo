@@ -11,20 +11,7 @@ public class AttackCommand : BaseCommand
         m_bRunning = false;
     }
 
-    public override void OnEnter()
-    {
-        
-    }
-
-    public override void OnUpdate()
-    {
-        
-    }
-
-    public override void OnExit()
-    {
-        
-    }
+    
 
     
     

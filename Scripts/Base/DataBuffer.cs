@@ -41,6 +41,12 @@ public class DataBuffer
         cursor = 0;
     }
 
+    public void Clear()
+    {
+        cursor = 0;
+        byteList.Clear();
+    }
+
     public byte ReadByte()
     {
         byte ret = byteList[cursor];
@@ -61,6 +67,14 @@ public class DataBuffer
     {
         int ret = BitConverter.ToInt32(byteList.ToArray(), cursor);
         MoveCursor(4);
+
+        return ret;
+    }
+
+    public long ReadLong()
+    {
+        long ret = BitConverter.ToInt64(byteList.ToArray(), cursor);
+        MoveCursor(8);
 
         return ret;
     }
@@ -108,6 +122,11 @@ public class DataBuffer
     public void WriteInt(int i)
     {
         byteList.AddRange(BitConverter.GetBytes(i));
+    }
+
+    public void WriteLong(long l)
+    {
+        byteList.AddRange(BitConverter.GetBytes(l));
     }
 
     public void WriteFloat(float f)

@@ -41,18 +41,17 @@ public class MoveCommand : BaseCommand
 
     public override void OnEnter()
     {
-        
+        base.OnEnter();
+    }
+
+    public override void OnLeave()
+    {
+        base.OnLeave();
     }
 
     public override void OnUpdate()
     {
-        
+        base.OnUpdate();
     }
-
-    public override void OnExit()
-    {
-        
-    }
-    
     
 }
