@@ -1,36 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 移动命令
+/// 进入移动状态,长期状态
+/// </summary>
 public class MoveCommand : BaseCommand
 {
-
-    Vector3 m_curPos;
-    Vector3 m_targetPos;
-
-    public Vector3 curPos
-    {
-        get
-        {
-            return m_curPos;
-        }
-        set
-        {
-            m_curPos = value;
-        }
-    }
-
-    public Vector3 targetPos
-    {
-        get
-        {
-            return m_targetPos;
-        }
-        set
-        {
-            m_targetPos = value;
-        }
-    }
-
 
     public MoveCommand()
     {
@@ -42,6 +18,17 @@ public class MoveCommand : BaseCommand
     public override void OnEnter()
     {
         base.OnEnter();
+        if (m_entiyView == null)
+        {
+            m_bFinished = true;
+        }
+           
+    }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+        run();
     }
 
     public override void OnLeave()
@@ -49,9 +36,8 @@ public class MoveCommand : BaseCommand
         base.OnLeave();
     }
 
-    public override void OnUpdate()
+    public override void run()
     {
-        base.OnUpdate();
+        
     }
-    
 }

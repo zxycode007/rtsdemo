@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class EntityManager : BaseObject
 {
     public Transform curEntity;
+    public List<EntityView> m_entities;
 
     public static EntityManager instance;
 
@@ -76,9 +78,12 @@ public class EntityManager : BaseObject
         RegisterEvt();
     }
 
-    // Update is called once per frame
-    void Update()
+   //逻辑更新
+    public void LogicUpdate()
     {
-
+        foreach(EntityView ev in m_entities)
+        {
+            ev.UpdateFSM();
+        }
     }
 }

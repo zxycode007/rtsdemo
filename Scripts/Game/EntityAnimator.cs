@@ -22,6 +22,7 @@ public class AnimationTriggerNode
     AnimationTriggerNode m_parent;
     List<AnimationTriggerNode> m_childs;
     bool m_isActived;
+
     public AnimationTriggerNode(string triggerName)
     {
         m_isActived = false;
@@ -318,7 +319,10 @@ public class EntityAnimator : MonoBehaviour
                     m_triggerMgr.OnTrigger("isMove");
                 }
                 break;
+
+                
         }
+        
     }
 
     // Use this for initialization

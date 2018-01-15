@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
+/// <summary>
+/// 移动状态
+/// 从一个目标点移动到另一个目标点，结束后切换回Stand状态
+/// 
+/// </summary>
 public class EntityMoveState : BaseState
 {
     public Vector3 startPos;
     public Vector3 endPos;
-    
+    EntityAnimator m_animator;
 
     public EntityMoveState():base()
     {
@@ -26,24 +33,28 @@ public class EntityMoveState : BaseState
         base.OnStartState();
         if (entityview == null)
             OnLeaveState();
-        EntityAnimator animator = entityview.animator;
-        if(animator != null)
+        m_animator = entityview.animator;
+        if (m_animator != null)
         {
-            animator.Play(EAnimationType.Move, 1.0f);
+            m_animator.Play(EAnimationType.Move, 1.0f);
         }
     }
 
     public override void OnUpdateState()
     {
         base.OnUpdateState();
-
-
+        Vector3 dir = endPos - startPos;
+        m_entityView.position = startPos + (dir) * m_percent;
 
     }
 
     public override void OnEndState()
     {
         base.OnEndState();
+        //if (m_animator != null)
+        //{
+        //    m_animator.Play(EAnimationType.Stand, 1.0f);
+        //}
     }
 
     public override void OnLeaveState()

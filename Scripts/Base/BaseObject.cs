@@ -9,7 +9,7 @@ using UnityEngine;
 public class BaseObject: MonoBehaviour {
 
     protected GameEventContext evtCtx = new GameEventContext();
-
+    protected PropertySystem m_propSys = new PropertySystem();
     void Awake()
     {
         

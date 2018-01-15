@@ -7,6 +7,20 @@ public class EntityView : BaseObject
     private EntityAnimator m_animator;
     private int m_uid;
     private Dictionary<string, BaseFSM> m_fsmDict;
+    //暂时世界坐标位置
+    private Vector3 m_pos;
+
+    public Vector3 position
+    {
+        get
+        {
+            return m_pos;
+        }
+        set
+        {
+            m_pos = value;
+        }
+    }
 
     public int uid
     {
@@ -42,7 +56,7 @@ public class EntityView : BaseObject
     /// <summary>
     /// 更新这个实体附带的所有状态机
     /// </summary>
-    void UpdateFSM()
+    public void UpdateFSM()
     {
 
     }
@@ -50,7 +64,8 @@ public class EntityView : BaseObject
     // Update is called once per frame
     void Update()
     {
-         
+        //更新实体位置
+        transform.position = position;
     }
 
     public EntityAnimator animator

@@ -4,7 +4,9 @@ using System.Collections;
 //暂时定义的命令类型
 public enum ECommandType
 {
+    ECommand_MoveTo,
     ECommand_Move,
+    ECommand_StopMove,
     ECommand_Idle,
     ECommand_Attack,
     ECommand_None
@@ -31,6 +33,7 @@ public class BaseCommand
     //命令结束时刻
     public long endTick;
     public ECommandPriority priority;
+    public CommandManager commandMgr;
     
 
     public BaseCommand()

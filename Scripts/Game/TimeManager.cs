@@ -104,6 +104,8 @@ public class TimeManager : BaseObject
             CurLogicFrameTime = m_frameTime;
             m_curTicks++;
             m_accTime = m_accTime - m_frameTime;
+            //游戏逻辑更新
+            GameManager.instance.GameLogicOnUpdate();
         }
     }
 

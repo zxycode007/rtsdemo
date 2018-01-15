@@ -4,9 +4,13 @@ using System.Collections.Generic;
 
 public class PropertySet
 {
+    //名字映射
     Dictionary<string, int> m_propertyNameMap;
+    //属性列表
     List<Property> m_propertyList;
+    //父属性集
     PropertySet m_parent;
+    /// 子属性集
     Dictionary<string, PropertySet> m_childs;
     PropertySystem m_system;
 
