@@ -5,20 +5,12 @@ public class GameManager : BaseObject
 {
 
     public static GameManager instance;
-    CommandManager m_commandMgr;
-
-    public CommandManager commandManager
-    {
-        get
-        {
-            return m_commandMgr;
-        }
-    }
+    
 
     void Awake()
     {
         instance = this;
-        m_commandMgr = new CommandManager();
+        
     }
 
      void Start()
@@ -36,7 +28,6 @@ public class GameManager : BaseObject
     /// </summary>
     public void GameLogicOnUpdate()
     {
-        m_commandMgr.Update();
         EntityManager.instance.LogicUpdate();
     }
 

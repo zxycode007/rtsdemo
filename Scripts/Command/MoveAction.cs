@@ -5,12 +5,14 @@ using System.Collections;
 /// 移动命令
 /// 进入移动状态,长期状态
 /// </summary>
-public class MoveCommand : BaseCommand
+public class MoveAction : BaseAction
 {
+    public Vector3 startPos;
+    public Vector3 endPos;
 
-    public MoveCommand()
+    public MoveAction()
     {
-        mType = ECommandType.ECommand_Move;
+        mType = EActionType.EAction_Move;
         m_bRunning = false;
         m_bFinished = false;
     }

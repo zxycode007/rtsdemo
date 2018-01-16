@@ -83,7 +83,7 @@ public class EntityManager : BaseObject
     {
         foreach(EntityView ev in m_entities)
         {
-            ev.UpdateFSM();
+            ev.LogicUpdate();
         }
     }
 }

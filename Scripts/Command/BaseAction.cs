@@ -2,26 +2,26 @@
 using System.Collections;
 
 //暂时定义的命令类型
-public enum ECommandType
+public enum EActionType
 {
-    ECommand_MoveTo,
-    ECommand_Move,
-    ECommand_StopMove,
-    ECommand_Idle,
-    ECommand_Attack,
-    ECommand_None
+    EAction_MoveTo,
+    EAction_Move,
+    EAction_StopMove,
+    EAction_Idle,
+    EAction_Attack,
+    EAction_None
 }
 
 public enum ECommandPriority
 {
-    ECommand_High,  //高的话，不用等之前命令执行完，冲掉当前命令，执行这个命令
-    ECommand_Low    //低的话，压入队列，等待前一个执行完毕，再执行这个
+    EAction_High,  //高的话，不用等之前命令执行完，冲掉当前命令，执行这个命令
+    EAction_Low    //低的话，压入队列，等待前一个执行完毕，再执行这个
 }
 
-public class BaseCommand
+public class BaseAction
 {
     protected GameEventContext m_EvtCtx = new GameEventContext();
-    protected ECommandType mType;
+    protected EActionType mType;
     protected bool m_bFinished;
     protected bool m_bRunning;
     //命令对象
@@ -33,16 +33,16 @@ public class BaseCommand
     //命令结束时刻
     public long endTick;
     public ECommandPriority priority;
-    public CommandManager commandMgr;
+    public ActionManager actionMgr;
     
 
-    public BaseCommand()
+    public BaseAction()
     {
-        mType = ECommandType.ECommand_None;
+        mType = EActionType.EAction_None;
         m_bFinished = false;
         m_bRunning = false;
         m_entiyView = null;
-        priority = ECommandPriority.ECommand_Low;
+        priority = ECommandPriority.EAction_Low;
          
     }
 
@@ -94,7 +94,7 @@ public class BaseCommand
         return m_bFinished;
     }
 
-    public ECommandType commandType
+    public EActionType commandType
     {
         get
         {
@@ -103,7 +103,7 @@ public class BaseCommand
     }
 
     //按开始时间排序
-    public static bool Compare(HeapNode<BaseCommand> A, HeapNode<BaseCommand> B)
+    public static bool Compare(HeapNode<BaseAction> A, HeapNode<BaseAction> B)
     {
         return A.Value.startTick > B.Value.startTick;
     }

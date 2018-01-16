@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AttackCommand : BaseCommand
+public class AttackAction : BaseAction
 {
 
-    public AttackCommand()
+    public AttackAction()
     {
-        mType = ECommandType.ECommand_Attack;
+        mType = EActionType.EAction_Attack;
         m_bFinished = false;
         m_bRunning = false;
     }

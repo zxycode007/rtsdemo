@@ -12,14 +12,48 @@ public class BaseFSM
 {
 
     EntityView m_entityview;
-    public BaseState m_curState;
+    BaseState m_curState;
     //可能一个实体有多个部件，每个部件都有一个状态机，并且类型可能相同, 所以用名字来做唯一区分
     public string m_name;
     //指定状态机类型
     protected EFSM_TYPE m_type;
 
     //状态节点
-    List<BaseState> m_stateNodes;
+    protected List<BaseState> m_stateNodes;
+
+    protected BaseState m_defaultNode;
+
+    public BaseState currentState
+    {
+        get
+        {
+            return m_curState;
+        }
+        set
+        {
+            m_curState = value;
+        }
+    }
+
+    public BaseState defaultNode
+    {
+        get
+        {
+            return m_defaultNode;
+        }
+        set
+        {
+            m_defaultNode = value;
+        }
+    }
+
+    public List<BaseState> states
+    {
+        get
+        {
+            return states;
+        }
+    }
     
     public EFSM_TYPE type
     {
@@ -107,7 +141,10 @@ public class BaseFSM
     }
 
 
+    public virtual void LoadSchema(string fileName)
+    {
 
+    }
     
     
 }

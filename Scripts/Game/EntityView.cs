@@ -9,6 +9,15 @@ public class EntityView : BaseObject
     private Dictionary<string, BaseFSM> m_fsmDict;
     //暂时世界坐标位置
     private Vector3 m_pos;
+    ActionManager m_actionMgr;
+
+    public ActionManager actionManager
+    {
+        get
+        {
+            return m_actionMgr;
+        }
+    }
 
     public Vector3 position
     {
@@ -45,6 +54,8 @@ public class EntityView : BaseObject
         m_animator = gameObject.GetComponent<EntityAnimator>();
         m_uid = gameObject.GetHashCode();
         m_fsmDict = new Dictionary<string, BaseFSM>();
+        m_actionMgr = new ActionManager();
+
     }
 
     // Use this for initialization
@@ -53,11 +64,17 @@ public class EntityView : BaseObject
 
     }
 
-    /// <summary>
-    /// 更新这个实体附带的所有状态机
-    /// </summary>
-    public void UpdateFSM()
+    void UpdateFSM()
     {
+
+    }
+    /// <summary>
+    /// 逻辑更新
+    /// </summary>
+    public void LogicUpdate()
+    {
+        m_actionMgr.Update();
+        UpdateFSM();
 
     }
 

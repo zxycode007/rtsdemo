@@ -17,16 +17,38 @@ public class BaseState
     protected float m_percent;
     //状态的实体
     protected EntityView m_entityView;
-    public bool isRunning;
-    //开始tick
-    public long startTick;
-    //结束tick
-    public long endTick;
+
+
+    //已流逝tick
+    protected long m_elapseTick;
+    protected long m_curTick;
+    protected long m_startTick;
+    protected long m_durationTick;
+
+    public long elapseTick
+    {
+        get
+        {
+            return m_elapseTick;
+        }
+    }
+
+    public long durationTick
+    {
+        get
+        {
+            return m_durationTick;
+        }
+        set
+        {
+            m_durationTick = value;
+        }
+    }
+ 
 
     public BaseState timeOutState;
     protected BaseFSM m_curFsm;
 
-    long m_curTick;
 
 
     public BaseFSM curFSM
@@ -61,35 +83,39 @@ public class BaseState
 
     public virtual void OnEnterState()
     {
-        
+        m_curFsm.currentState = this;
+        m_startTick = TimeManager.instance.GetCurTick();
+        m_elapseTick = 0;   
     }
 
     public virtual void OnStartState()
     {
-        if (startTick > endTick)
-            startTick = endTick;
+         
          
     }
 
+    /// <summary>
+    /// 跳转去其它状态
+    /// </summary>
+    /// <param name="outstate"></param>
     protected void Goto(BaseState outstate)
-    {
-        m_curFsm.m_curState = outstate;
+    {    
         OnLeaveState();
         outstate.OnEnterState();
     }
 
     public virtual void OnUpdateState()
     {
-        if(isRunning)
-        {
-            m_curTick = TimeManager.instance.GetCurTick();
-            if(m_curTick > endTick)
+         m_curTick = TimeManager.instance.GetCurTick();
+         m_elapseTick = m_curTick - m_startTick;
+        if(m_elapseTick > m_durationTick)
             {
                 percent = 1.0f;
 
             }else
             {
-                percent = (float)(m_curTick - startTick) / (float)(endTick - startTick);
+                percent = (float)(m_elapseTick) / (float)(m_durationTick);
+                
             }
 
             if(percent >= 1.0f)
@@ -97,7 +123,6 @@ public class BaseState
                 OnEndState();
                 Goto(timeOutState);
             }
-        }
     }
 
     public virtual void OnEndState()
@@ -127,7 +152,6 @@ public class BaseState
     {
         m_type = EStateType.EStateType_None;
         percent = 0;
-        isRunning = false;
         //默认循环
         timeOutState = this;
         m_curFsm = null;

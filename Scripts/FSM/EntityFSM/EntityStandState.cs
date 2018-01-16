@@ -18,7 +18,10 @@ public class EntityStandState : BaseState
     {
         base.OnStartState();
         if (entityview == null)
+        {
+            Goto(timeOutState);
             OnLeaveState();
+        }
         EntityAnimator animator = entityview.animator;
         if (animator != null)
         {

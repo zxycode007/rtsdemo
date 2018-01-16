@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FSM name="EntityActionFSM" defaultNode="Stand">
+<StateNode 
+ name="Stand"
+ type="EntityStandState"
+ AnimationType="Stand"
+ AnimationSpeed=1.0
+ outState="Stand">
+</StateNode>
+<StateNode
+ name="Move"
+ AnimationType="Move"
+ AnimationSpeed=1.0
+ outState="Stand" >
+</StateNode>
+</FSM>

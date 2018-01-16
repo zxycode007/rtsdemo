@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+
+
+ 
 
 public class LogicEntityFSM : BaseFSM
 {
+    
 
     public LogicEntityFSM():base()
     {
@@ -23,5 +30,9 @@ public class LogicEntityFSM : BaseFSM
     {
         base.OnLeave();
     }
-    
+
+    public override void LoadSchema(string fileName)
+    {
+        
+    }
 }

@@ -32,7 +32,10 @@ public class EntityMoveState : BaseState
     {
         base.OnStartState();
         if (entityview == null)
+        {
+            Goto(timeOutState);
             OnLeaveState();
+        }
         m_animator = entityview.animator;
         if (m_animator != null)
         {
@@ -43,6 +46,18 @@ public class EntityMoveState : BaseState
     public override void OnUpdateState()
     {
         base.OnUpdateState();
+        //
+        if(m_entityView == null)
+        {
+            Goto(timeOutState);
+            OnLeaveState();
+        }
+        BaseAction cmd = m_entityView.actionManager.Pick();
+        if(cmd.commandType == EActionType.EAction_Move)
+        {
+            MoveAction moveCmd = cmd as MoveAction;
+            
+        }
         Vector3 dir = endPos - startPos;
         m_entityView.position = startPos + (dir) * m_percent;
 
