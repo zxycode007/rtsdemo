@@ -34,7 +34,26 @@ public class BaseAction
     public long endTick;
     public ECommandPriority priority;
     public ActionManager actionMgr;
-    
+
+    protected long m_elapseTick;
+    protected long m_durationTick;
+    protected float m_percent;
+
+    public long elapseTick
+    {
+        get
+        {
+            return m_elapseTick;
+        }
+    }
+
+    public long durationTikc
+    {
+        get
+        {
+            return m_durationTick;
+        }
+    }
 
     public BaseAction()
     {
@@ -73,7 +92,10 @@ public class BaseAction
     }
 
     public virtual void OnEnter()
-    { }
+    {
+        m_durationTick = endTick - startTick;
+        m_elapseTick = 0;
+    }
 
     public virtual void OnLeave()
     {
@@ -81,7 +103,16 @@ public class BaseAction
     }
     public virtual void OnUpdate()
     {
-
+        if (m_bFinished)
+            return;
+        long curTick = TimeManager.instance.GetCurTick();
+        m_elapseTick = curTick - startTick;
+        if(m_elapseTick >= m_durationTick)
+        {
+            m_elapseTick = m_durationTick;
+            m_bFinished = true;
+        }
+        m_percent = (float)m_elapseTick / (float)m_durationTick;
     }
 
     public bool isRunning()
@@ -94,7 +125,7 @@ public class BaseAction
         return m_bFinished;
     }
 
-    public EActionType commandType
+    public EActionType actionType
     {
         get
         {

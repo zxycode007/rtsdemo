@@ -140,11 +140,20 @@ public class BaseFSM
         m_type = EFSM_TYPE.EFSM_DEFAULT_FSM;
     }
 
-
-    public virtual void LoadSchema(string fileName)
+    public BaseState FindChildState(string name)
     {
-
+        foreach (BaseState state in states)
+        {
+            if (state.name == name)
+            {
+                return state;
+            }
+        }
+        return null;
     }
+
+
+    
     
     
 }

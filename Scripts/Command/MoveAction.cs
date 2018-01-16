@@ -7,8 +7,8 @@ using System.Collections;
 /// </summary>
 public class MoveAction : BaseAction
 {
-    public Vector3 startPos;
-    public Vector3 endPos;
+    private Vector3 startPos;
+    public  Vector3 endPos;
 
     public MoveAction()
     {
@@ -24,7 +24,12 @@ public class MoveAction : BaseAction
         {
             m_bFinished = true;
         }
-           
+        startPos = m_entiyView.position;
+        LogicEntityFSM fsm = m_entiyView.GetFSM("LogicEntityFSM") as LogicEntityFSM;
+        if(fsm != null)
+        {
+           fsm.OnCommand(EActionType.EAction_Move, null);
+        }
     }
 
     public override void OnUpdate()
@@ -36,10 +41,20 @@ public class MoveAction : BaseAction
     public override void OnLeave()
     {
         base.OnLeave();
+        LogicEntityFSM fsm = m_entiyView.GetFSM("LogicEntityFSM") as LogicEntityFSM;
+        if (fsm != null)
+        {
+            fsm.OnCommand(EActionType.EAction_Idle, null);
+        }
     }
 
     public override void run()
     {
+        if (m_entiyView == null)
+            m_bFinished = true;
+        Vector3 curPos = startPos + (endPos - startPos) * m_percent;
+        m_entiyView.position = curPos;
+        return;
         
     }
 }

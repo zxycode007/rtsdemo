@@ -31,8 +31,15 @@ public class LogicEntityFSM : BaseFSM
         base.OnLeave();
     }
 
-    public override void LoadSchema(string fileName)
+    public void OnCommand(EActionType action,  byte[] param)
     {
+        if (currentState != null)
+        {
+            LogicEntityState state = currentState as LogicEntityState;
+            state.OnCommand(action, param);
+        }
         
     }
+
+   
 }

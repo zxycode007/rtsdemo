@@ -39,6 +39,10 @@ public class EntityView : BaseObject
         }
     }
 
+    public BaseAction GetCurrentAction()
+    {
+        return m_actionMgr.Pick();
+    }
     public void SetFSM(string fsmName, BaseFSM fsm)
     {
         m_fsmDict[fsmName] = fsm;

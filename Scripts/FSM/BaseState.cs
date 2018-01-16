@@ -1,12 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum EStateType
 {
-    EStateType_Move,
-    EStateType_Attack,
-    EStateType_Stand,
-    EStateType_None
+    EStateType_EntityAnimation,
+    EStateType_LoginEntiy,
+    EStateType_Default
+}
+
+public struct StateLink
+{
+    public int linkID;
+    public string linkStateName;
+
 }
 
 public class BaseState
@@ -17,13 +24,18 @@ public class BaseState
     protected float m_percent;
     //状态的实体
     protected EntityView m_entityView;
+    protected string m_name;
 
+    
 
     //已流逝tick
     protected long m_elapseTick;
     protected long m_curTick;
     protected long m_startTick;
+    //持续时间
     protected long m_durationTick;
+
+    Dictionary<int, StateLink> m_links;
 
     public long elapseTick
     {
@@ -44,7 +56,26 @@ public class BaseState
             m_durationTick = value;
         }
     }
+
+    public string name
+    {
+        get
+        {
+            return m_name;
+        }
+        set
+        {
+            m_name = value;
+        }
+    }
  
+    public Dictionary<int, StateLink> links
+    {
+        get
+        {
+            return m_links;
+        }
+    }
 
     public BaseState timeOutState;
     protected BaseFSM m_curFsm;
@@ -125,6 +156,8 @@ public class BaseState
             }
     }
 
+    
+
     public virtual void OnEndState()
     {
 
@@ -148,14 +181,18 @@ public class BaseState
         }
     }
 
+   // public void OnCommand()
+
     public BaseState()
     {
-        m_type = EStateType.EStateType_None;
+        m_type = EStateType.EStateType_Default;
         percent = 0;
         //默认循环
         timeOutState = this;
         m_curFsm = null;
+        m_links = new Dictionary<int,StateLink>();
     }
 
-   
+    
+    
 }
