@@ -9,7 +9,7 @@ public enum EStateType
     EStateType_Default
 }
 
-public struct StateLink
+public class StateLink
 {
     public int linkID;
     public string linkStateName;
@@ -181,6 +181,13 @@ public class BaseState
         }
     }
 
+    public EStateType type
+    {
+        get
+        {
+            return m_type;
+        }
+    }
    // public void OnCommand()
 
     public BaseState()
