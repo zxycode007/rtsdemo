@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public enum EStateType
 {
-    EStateType_EntityAnimation,
     EStateType_LoginEntiy,
+    EStateType_EntityAnimation,
     EStateType_Default
 }
 
@@ -200,6 +200,19 @@ public class BaseState
         m_links = new Dictionary<int,StateLink>();
     }
 
-    
+    public virtual BaseState Clone()
+    {
+        BaseState cloneObj = new BaseState();
+        cloneObj.durationTick = this.durationTick;
+        cloneObj.name = this.name;
+        foreach(KeyValuePair<int,StateLink> kv in m_links)
+        {
+            StateLink link = new StateLink();
+            link.linkID = kv.Value.linkID;
+            link.linkStateName = kv.Value.linkStateName;
+            cloneObj.m_links[link.linkID] = link;
+        }
+        return cloneObj;
+    }
     
 }

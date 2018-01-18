@@ -51,7 +51,7 @@ public class BaseFSM
     {
         get
         {
-            return states;
+            return m_stateNodes;
         }
     }
     
@@ -126,7 +126,7 @@ public class BaseFSM
         m_stateNodes.Remove(state);
     }
 
-    public BaseState GetStateNode(int index)
+    public virtual BaseState GetStateNode(int index)
     {
         if (index > m_stateNodes.Count)
             return null;
@@ -140,7 +140,7 @@ public class BaseFSM
         m_type = EFSM_TYPE.EFSM_DEFAULT_FSM;
     }
 
-    public BaseState FindChildState(string name)
+    public virtual BaseState FindChildState(string name)
     {
         foreach (BaseState state in states)
         {
@@ -152,7 +152,13 @@ public class BaseFSM
         return null;
     }
 
-
+    public virtual BaseFSM Clone()
+    {
+        BaseFSM cloneFsm = new BaseFSM();
+        cloneFsm.name = m_name;
+        
+        return cloneFsm;
+    }
     
     
     

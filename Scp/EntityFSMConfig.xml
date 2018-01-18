@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FSM name="EntityActionFSM" defaultNode="Stand">
+<FSM name="EntityActionFSM" defaultNode="Stand" type="LogicEntityFSM">
 <StateNode 
  name="Stand"
- type="EntityStandState"
+ type="EntityAnimationState"
  AnimationType="Stand"
  AnimationSpeed="1.0"
  outState="Stand"
@@ -13,6 +13,7 @@
 </StateNode>
 <StateNode
  name="Move"
+ type="EntityAnimationState"
  AnimationType="Move"
  AnimationSpeed="1.0"
  outState="Stand"
