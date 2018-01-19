@@ -212,7 +212,9 @@ public class AnimationTriggerManager
 }
 
 
-
+/// <summary>
+/// 动画控制器
+/// </summary>
 public class EntityAnimator : MonoBehaviour
 {
     private Animator m_animator;

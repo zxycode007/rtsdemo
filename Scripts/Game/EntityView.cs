@@ -60,6 +60,7 @@ public class EntityView : BaseObject
         m_fsmDict = new Dictionary<string, BaseFSM>();
         m_actionMgr = new ActionManager();
         LogicEntityFSM entityFSM = FSMManager.instance.CreateFSM("EntityActionFSM") as LogicEntityFSM;
+        m_fsmDict.Add("EntityActionFSM", entityFSM);
 
     }
 
@@ -69,21 +70,32 @@ public class EntityView : BaseObject
 
     }
 
+    /// <summary>
+    /// 更新本实体的每一个状态机
+    /// </summary>
     void UpdateFSM()
     {
-
+        foreach(KeyValuePair<string,BaseFSM> kv in m_fsmDict)
+        {
+            if(kv.Value != null)
+            {
+                BaseFSM fsm = kv.Value;
+                fsm.OnUpdate();
+            }
+        }
     }
     /// <summary>
-    /// 逻辑更新
+    /// 逻辑层面更新
     /// </summary>
     public void LogicUpdate()
     {
+        //先更新指令
         m_actionMgr.Update();
         UpdateFSM();
 
     }
 
-    // Update is called once per frame
+    // 显示层面的更新
     void Update()
     {
         //更新实体位置
