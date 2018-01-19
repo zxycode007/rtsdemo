@@ -39,6 +39,7 @@ public class GameEvtArg : EventArgs
     {
         m_buf = buf;
     }
+
 }
 
 

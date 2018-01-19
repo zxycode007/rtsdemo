@@ -59,6 +59,7 @@ public class EntityView : BaseObject
         m_uid = gameObject.GetHashCode();
         m_fsmDict = new Dictionary<string, BaseFSM>();
         m_actionMgr = new ActionManager();
+        LogicEntityFSM entityFSM = FSMManager.instance.CreateFSM("EntityActionFSM") as LogicEntityFSM;
 
     }
 

@@ -35,7 +35,7 @@ public class BaseState
     //持续时间
     protected long m_durationTick;
 
-    Dictionary<int, StateLink> m_links;
+    protected Dictionary<int, StateLink> m_links;
 
     public long elapseTick
     {

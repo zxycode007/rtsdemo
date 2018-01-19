@@ -18,6 +18,15 @@ public class FSMManager : BaseObject
         LoadFSMConfig();
     }
 
+    public BaseFSM CreateFSM(string name)
+    {
+        if(m_fsmTemplates.ContainsKey(name))
+        {
+            return m_fsmTemplates[name].Clone();
+        }
+        return null;
+    }
+
     public void LoadFSMConfig()
     {
         XmlDocument xml = new XmlDocument();
@@ -29,18 +38,19 @@ public class FSMManager : BaseObject
             string data = obj.ToString();
             xml.LoadXml(data);
             XmlNodeList fsmList = xml.ChildNodes;
+            //读取所有状态机节点
             foreach (XmlNode node in fsmList)
             {
                 if (node.Name == "FSM")
                 {
-                    CreateFSMTemplate(node);
+                    LoadFSMTemplate(node);
                 }
             }
         }
         
     }
 
-    public void CreateFSMTemplate(XmlNode fsmNode)
+    public void LoadFSMTemplate(XmlNode fsmNode)
     {
         Assembly assembly = Assembly.GetExecutingAssembly();
         if (fsmNode == null || fsmNode.Name != "FSM")
@@ -148,7 +158,7 @@ public class FSMManager : BaseObject
 
     void Update()
     {
-        Debug.Log("sss");
+        //Debug.Log("sss");
     }
      
 }

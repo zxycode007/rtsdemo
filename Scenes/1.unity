@@ -928,12 +928,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 576883507}
-  - component: {fileID: 576883505}
-  - component: {fileID: 576883506}
   - component: {fileID: 576883508}
   - component: {fileID: 576883509}
-  - component: {fileID: 576883510}
-  - component: {fileID: 576883511}
   m_Layer: 0
   m_Name: GlobalObject
   m_TagString: Untagged
@@ -941,28 +937,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &576883505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 576883504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f923bdd7fdcb2749898aa359ab2e2c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &576883506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 576883504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2223b21d5018824189aa50ae62849a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &576883507
 Transform:
   m_ObjectHideFlags: 0
@@ -999,28 +973,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a325e04df65a3a84c9b43ebb5ac22241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &576883510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 576883504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5138ee170adc342b6fcda9f31b67fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &576883511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 576883504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04da0845293871e4486a47ff3c2347d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &802542682

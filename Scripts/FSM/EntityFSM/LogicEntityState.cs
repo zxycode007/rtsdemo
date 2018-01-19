@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LogicEntityState : BaseState
 {
@@ -43,5 +44,20 @@ public class LogicEntityState : BaseState
     public override void OnLeaveState()
     {
         base.OnLeaveState();
+    }
+
+    public override BaseState Clone()
+    {
+        LogicEntityState cloneObj = new LogicEntityState();
+        cloneObj.durationTick = this.durationTick;
+        cloneObj.name = this.name;
+        foreach (KeyValuePair<int, StateLink> kv in m_links)
+        {
+            StateLink link = new StateLink();
+            link.linkID = kv.Value.linkID;
+            link.linkStateName = kv.Value.linkStateName;
+            cloneObj.m_links[link.linkID] = link;
+        }
+        return cloneObj;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 
@@ -120,5 +121,22 @@ public class EntityAnimationState : LogicEntityState
         base.OnLeaveState();
     }
 
+    public override BaseState Clone()
+    {
+        EntityAnimationState cloneObj = new EntityAnimationState();
+        cloneObj.durationTick = this.durationTick;
+        cloneObj.name = this.name;
+        cloneObj.animantioName = this.animantioName;
+        cloneObj.animationSpeed = this.animationSpeed;
+        cloneObj.loopCount = this.loopCount;
+        foreach (KeyValuePair<int, StateLink> kv in m_links)
+        {
+            StateLink link = new StateLink();
+            link.linkID = kv.Value.linkID;
+            link.linkStateName = kv.Value.linkStateName;
+            cloneObj.m_links[link.linkID] = link;
+        }
+        return cloneObj;
+    }
     
 }

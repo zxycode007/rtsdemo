@@ -154,10 +154,22 @@ public class BaseFSM
 
     public virtual BaseFSM Clone()
     {
-        BaseFSM cloneFsm = new BaseFSM();
-        cloneFsm.name = m_name;
+        BaseFSM cfsm = new BaseFSM();
+        cfsm.name = m_name;
+
+        foreach(BaseState snode in m_stateNodes)
+        {
+            BaseState cnode = snode.Clone();
+            cnode.curFSM = cfsm;
+            cfsm.states.Add(snode);
+        }
+        BaseState defaultNode = cfsm.FindChildState(m_defaultNode.name);
+        if(defaultNode != null)
+        {
+            cfsm.AddStateNode(defaultNode);
+        }
         
-        return cloneFsm;
+        return cfsm;
     }
     
     
