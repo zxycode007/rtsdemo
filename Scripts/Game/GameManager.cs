@@ -32,8 +32,8 @@ public class GameManager : BaseObject
     /// </summary>
     public void GameLogicOnUpdate()
     {
-        //EntityManager.instance.LogicUpdate();
         m_sceneController.UpdateSceneState();
+        
     }
     void Destory()
     {
