@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 public class PropertySystem
 {
-
+    //属性集列表
     List<PropertySet> m_propSets;
+    //root属性集
     PropertySet m_root;
+    //是否自动创建节点
     bool m_bAutoCreateNode;
 
     public bool isAutoCreateNode
@@ -32,6 +34,7 @@ public class PropertySystem
     public PropertySystem()
     {
         m_propSets = new List<PropertySet>();
+        
     }
 
 

@@ -12,6 +12,7 @@ public class BaseFSM
 {
 
     EntityView m_entityview;
+    EntityAnimator m_animator;
     BaseState m_curState;
     //可能一个实体有多个部件，每个部件都有一个状态机，并且类型可能相同, 所以用名字来做唯一区分
     public string m_name;
@@ -23,6 +24,8 @@ public class BaseFSM
 
     protected BaseState m_defaultNode;
 
+     
+
     public BaseState currentState
     {
         get
@@ -32,6 +35,7 @@ public class BaseFSM
         set
         {
             m_curState = value;
+            
         }
     }
 
@@ -84,6 +88,8 @@ public class BaseFSM
         set
         {
             m_entityview = value;
+            m_animator = value.animator;
+            
         }
     }
 
@@ -166,12 +172,15 @@ public class BaseFSM
         BaseState defaultNode = cfsm.FindChildState(m_defaultNode.name);
         if(defaultNode != null)
         {
-            cfsm.AddStateNode(defaultNode);
+            //设置当前默认状态
+            cfsm.currentState = defaultNode;
+            cfsm.defaultNode = defaultNode;
         }
         
         return cfsm;
     }
     
+     
     
     
 }

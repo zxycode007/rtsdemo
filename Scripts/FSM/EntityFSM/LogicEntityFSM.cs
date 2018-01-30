@@ -55,7 +55,8 @@ public class LogicEntityFSM : BaseFSM
         BaseState defaultNode = cfsm.FindChildState(m_defaultNode.name);
         if (defaultNode != null)
         {
-            cfsm.AddStateNode(defaultNode);
+            cfsm.defaultNode = defaultNode;
+            cfsm.currentState = defaultNode;
         }
 
         return cfsm;

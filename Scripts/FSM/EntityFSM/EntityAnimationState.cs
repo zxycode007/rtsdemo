@@ -72,6 +72,8 @@ public class EntityAnimationState : LogicEntityState
     {
          
         base.OnEnterState();
+        m_animator = curFSM.entityview.animator;
+        entityview = curFSM.entityview;
         object obj = Enum.Parse(typeof(EAnimationType), m_animation);
         if(obj != null)
         {

@@ -20,6 +20,11 @@ public class GameManager : BaseObject
      void Start()   
     {
         m_sceneController = new SceneController();
+        BaseState bs = new BaseState();
+        bs.RegisterProperty(new StringProperty("name"));
+        bs.SetProperty("name", "lily");
+        object v = bs.GetPropertyValue("name");
+        Debug.Log(v);
     }
 
     void Update()

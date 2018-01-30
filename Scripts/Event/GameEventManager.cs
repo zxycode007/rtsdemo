@@ -22,7 +22,7 @@ public class GameEventManager : MonoBehaviour
     }
 
 
-    public void AddEventReceiver(GameEventType evt, GameEventContext context, EventHandler handler)
+    public void AddEventReceiver(GameEventType evt, GameEventContext context, GameEventHandler handler)
     {
         if (handler == null)
             return;
@@ -39,7 +39,7 @@ public class GameEventManager : MonoBehaviour
         eventReceivers[evt].Add(context);
     }
 
-    public void RemoveEventReceiver(GameEventType evt, GameEventContext context, EventHandler handler)
+    public void RemoveEventReceiver(GameEventType evt, GameEventContext context, GameEventHandler handler)
     {
         
         if (eventReceivers == null)

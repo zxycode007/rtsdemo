@@ -57,7 +57,170 @@ public class Property
         set
         {
             m_value = value;
+            
+            
         }
+    }
+
+
+    public void SetValue(object value)
+    {
+        string typeName = value.GetType().ToString();
+        switch (typeName)
+        {
+            case "byte":
+                {
+                    if (type == EPropertyType.EPropertyType_Byte)
+                    {
+                        ByteProperty prop = this as ByteProperty;
+                        prop.SetValue((byte)value);
+                        return;
+                    }
+                        
+                }
+                break;
+            case "bool":
+                {
+                    if (type == EPropertyType.EPropertyType_Bool)
+                    {
+                        BoolProperty prop = this as BoolProperty;
+                        prop.SetValue((bool)value);
+                        return;
+                    }
+                }
+                break;
+            case "short":
+                {
+                    if (type == EPropertyType.EPropertyType_Short)
+                    {
+                        ShortProperty prop = this as ShortProperty;
+                        prop.SetValue((short)value);
+                        return;
+                    }
+                }
+                break;
+            case "int":
+                {
+                    if (type == EPropertyType.EPropertyType_Int)
+                    {
+                        IntProperty prop = this as IntProperty;
+                        prop.SetValue((int)value);
+                        return;
+                    }
+                }
+                break;
+            case "long":
+                {
+                    if (type == EPropertyType.EPropertyType_Long)
+                    {
+                        LongProperty prop = this as LongProperty;
+                        prop.SetValue((long)value);
+                        return;
+                    }
+                }
+                break;
+            case "float":
+                {
+                    if (type == EPropertyType.EPropertyType_Float)
+                    {
+                        FloatProperty prop = this as FloatProperty;
+                        prop.SetValue((float)value);
+                        return;
+                    }
+                }
+                break;
+            case "double":
+                {
+                    if (type == EPropertyType.EPropertyType_Double)
+                    {
+                        DoubleProperty prop = this as DoubleProperty;
+                        prop.SetValue((double)value);
+                        return;
+                    }
+                }
+                break;
+            case "Vector2":
+                {
+                    if (type == EPropertyType.EPropertyType_Vector2)
+                    {
+                        Vector2Property prop = this as Vector2Property;
+                        prop.SetValue((Vector2)value);
+                        return;
+                    }
+                }
+                break;
+            case "Vector3":
+                {
+                    if (type == EPropertyType.EPropertyType_Vector3)
+                    {
+                        Vector3Property prop = this as Vector3Property;
+                        prop.SetValue((Vector3)value);
+                        return;
+                    }
+                }
+                break;
+            case "Vector4":
+                {
+                    if (type == EPropertyType.EPropertyType_Vector4)
+                    {
+                        Vector4Property prop = this as Vector4Property;
+                        prop.SetValue((Vector4)value);
+                        return;
+                    }
+                }
+                break;
+            case "Quaternion":
+                {
+                    if (type == EPropertyType.EPropertyType_Quaternion)
+                    {
+                        QuaternionProperty prop = this as QuaternionProperty;
+                        prop.SetValue((Quaternion)value);
+                        return;
+                    }
+                }
+                break;
+            case "Matrix4x4":
+                {
+                    if (type == EPropertyType.EPropertyType_Matrix4x4)
+                    {
+                        Matrix4x4Property prop = this as Matrix4x4Property;
+                        prop.SetValue((Matrix4x4)value);
+                        return;
+                    }
+                }
+                break;
+            case "Color":
+                {
+                    if (type == EPropertyType.EPropertyType_Color)
+                    {
+                        ColorProperty prop = this as ColorProperty;
+                        prop.SetValue((Color)value);
+                        return;
+                    }
+                }
+                break;
+            case "string":
+                {
+                    if (type == EPropertyType.EPropertyType_String)
+                    {
+                        StringProperty prop = this as StringProperty;
+                        prop.SetValue((string)value);
+                        return;
+                    }
+                }
+                break;
+            case "object":
+                {
+                    if (type == EPropertyType.EPropertyType_Object)
+                    {
+                        m_value = value;
+                        return;
+                    }
+                }
+                break;
+        }
+        return;
+
     }
 
     public Property(string name)
@@ -124,6 +287,43 @@ public class ByteProperty : Property
     }
 }
 
+
+public class BoolProperty : Property
+{
+    public BoolProperty(string name)
+        : base(name)
+    {
+        m_type = EPropertyType.EPropertyType_Bool;
+        m_value = 0;
+    }
+
+    public BoolProperty(string name, bool val)
+        : base(name)
+    {
+        m_type = EPropertyType.EPropertyType_Bool;
+        m_value = val;
+    }
+
+    public bool GetValue()
+    {
+        return (bool)m_value;
+    }
+
+    public void SetValue(bool val)
+    {
+        m_value = val;
+    }
+
+    public bool equals(BoolProperty other)
+    {
+        return this.GetValue() == other.GetValue();
+    }
+
+    public override string ToString()
+    {
+        return GetValue().ToString();
+    }
+}
 
 
 public class IntProperty : Property

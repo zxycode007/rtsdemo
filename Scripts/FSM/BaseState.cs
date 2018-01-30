@@ -9,9 +9,18 @@ public enum EStateType
     EStateType_Default
 }
 
+/// <summary>
+/// 状态链接
+/// </summary>
 public class StateLink
 {
+    /// <summary>
+    /// 连接ID
+    /// </summary>
     public int linkID;
+    /// <summary>
+    /// 连接状态名
+    /// </summary>
     public string linkStateName;
 
 }
@@ -36,6 +45,8 @@ public class BaseState
     protected long m_durationTick;
 
     protected Dictionary<int, StateLink> m_links;
+    protected PropertySystem m_propSys;
+    
 
     public long elapseTick
     {
@@ -125,6 +136,8 @@ public class BaseState
          
     }
 
+     
+
     /// <summary>
     /// 跳转去其它状态
     /// </summary>
@@ -198,6 +211,41 @@ public class BaseState
         timeOutState = this;
         m_curFsm = null;
         m_links = new Dictionary<int,StateLink>();
+        m_propSys = new PropertySystem();
+        m_propSys.NewPropertySet("root", "");
+    }
+
+    public void RegisterProperty(Property prop)
+    {
+        if(m_propSys.GetPropertySet("root") != null)
+        {
+            m_propSys.GetPropertySet("root").SetProperty(prop);
+        }
+    }
+
+    public void SetProperty(string name, object value)
+    {
+        if(m_propSys.GetPropertySet("root")!=null)
+        {
+            Property prop = m_propSys.GetPropertySet("root").GetProperty(name);
+            if(prop != null)
+            {
+                prop.SetValue(value);
+            }
+        }
+    }
+
+    public object GetPropertyValue(string name)
+    {
+        if (m_propSys.GetPropertySet("root") != null)
+        {
+            Property prop = m_propSys.GetPropertySet("root").GetProperty(name);
+            if (prop != null)
+            {
+                return prop.value;
+            }
+        }
+        return null;
     }
 
     public virtual BaseState Clone()
