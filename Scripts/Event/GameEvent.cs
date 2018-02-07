@@ -23,6 +23,10 @@ public enum GameEventType
     EVT_INPUT_JOYSTICK_DIR_CHANGED,
     //操作按钮输入
     EVT_INPUT_JOYSTICK_BUTTON_DOWN,
+    //键盘按键按下
+    EVT_INPUT_KEYBOARD_KEY_DOWN,
+    //键盘按键弹起
+    EVT_INPUT_KEYBOARD_KEY_UP,
 }
 
 public class GameEvtArg : EventArgs

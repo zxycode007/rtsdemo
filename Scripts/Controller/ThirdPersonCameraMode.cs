@@ -115,7 +115,7 @@ public class ThirdPersonCameraMode : CameraMode
              {
                  x += deltaX * m_xSpeed * 0.02f;
                  y -= deltaY * m_ySpeed * 0.02f;
-                 y = ClampAngle(y, m_minVerticlAngle, m_maxVerticlAngle);
+                 y = MathHelper.ClampAngle(y, m_minVerticlAngle, m_maxVerticlAngle);
 
                  //根据顺序绕Z,X,Y旋转角度生成一个四元数
                  Quaternion rot = Quaternion.Euler(new Vector3(y, x, 0));
@@ -131,22 +131,14 @@ public class ThirdPersonCameraMode : CameraMode
         {
             return;
         }
-
+        //设置相机于观察目标的位置
         Vector3 position = m_target.position - (transform.rotation * Vector3.forward * m_targetDistance + new Vector3(0.0f, -m_targetHeight, 0.0f));
         transform.position = position;
 
         m_target.transform.rotation = Quaternion.Euler(0, x, 0);
     }
 
-    static float ClampAngle(float angle, float min, float max)
-    {
-        if (angle < -360)
-            angle += 360;
-        if (angle > 360)
-            angle -= 360;
-        return Mathf.Clamp(angle, min, max);
-
-    }
+    
 
     public override void OnSwitchMode()
     {

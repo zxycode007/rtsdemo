@@ -47,8 +47,65 @@ public class InputManager : BaseObject
             buf.WriteFloat(deltaY);
             evtCtx.FireEvent(this, GameEventType.EVT_INPUT_MOUSE_MOVE, new GameEvtArg(buf));
         }
+        KeyCode code = KeyCode.None;
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            code = KeyCode.W;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_DOWN, new GameEvtArg(buf));
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            code = KeyCode.S;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_DOWN, new GameEvtArg(buf));
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            code = KeyCode.A;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_DOWN, new GameEvtArg(buf));
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            code = KeyCode.D;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_DOWN, new GameEvtArg(buf));
+        }
 
-         
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            code = KeyCode.W;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_UP, new GameEvtArg(buf));
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            code = KeyCode.S;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_UP, new GameEvtArg(buf));
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            code = KeyCode.A;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_UP, new GameEvtArg(buf));
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            code = KeyCode.D;
+            DataBuffer buf = new DataBuffer();
+            buf.WriteInt((int)code);
+            evtCtx.FireEvent(this, GameEventType.EVT_INPUT_KEYBOARD_KEY_UP, new GameEvtArg(buf));
+        }
+        
 
     }
 }

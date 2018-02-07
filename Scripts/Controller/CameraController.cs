@@ -36,6 +36,11 @@ public class CameraController : MonoBehaviour
                     m_cameraMode = new ThirdPersonCameraMode();
                 }
                 break;
+            case ECameraModeType.FreedomCamera:
+                {
+                    m_cameraMode = new FreedomCameraMode();
+                }
+                break;
         }
         if(m_cameraMode != null)
         {
@@ -50,7 +55,8 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         instance = this;
-        SwitchCameraMode(ECameraModeType.ThirdPersonCamera);
+        //SwitchCameraMode(ECameraModeType.ThirdPersonCamera);
+        SwitchCameraMode(ECameraModeType.FreedomCamera);
     }
 
     // Use this for initialization
