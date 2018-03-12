@@ -130,11 +130,12 @@ public class FreedomCameraMode : CameraMode
             }
             if (code == KeyCode.A)
             {
-                isTrBtnDown = false;
+                isTlBtnDown = false;
+                
             }
             if (code == KeyCode.D)
             {
-                isTlBtnDown = false;
+                isTrBtnDown = false;
             }
         }
 
