@@ -70,7 +70,7 @@ public class PropertySystem
             //判断是否到了路径最后一个节点,到了退出
             if (index < pathNodes.Length)
             {
-                parent = parent.FindChild(pathNodes[index]);
+                //parent = parent.FindChild(pathNodes[index]);
                 //是否自动创建节点
                 if (parent == null && isAutoCreateNode)
                 {
@@ -86,7 +86,7 @@ public class PropertySystem
         if (parent != null)
         {
             newNode.parent = parent;
-            parent.childs.Add(newNode.name, newNode);
+            //parent.childs.Add(newNode.name, newNode);
         }
         else
         {
@@ -110,7 +110,7 @@ public class PropertySystem
             }
             if (index <= pathNodes.Length - 1)
             {
-                node = node.FindChild(pathNodes[index]);
+               // node = node.FindChild(pathNodes[index]);
             }
             index++;
             if (index > pathNodes.Length - 1)
@@ -141,7 +141,7 @@ public class PropertySystem
             }
             if(index <=  pathNodes.Length -1 )
             {
-                node = node.FindChild(pathNodes[index]);
+               // node = node.FindChild(pathNodes[index]);
             }
             index++;
             if(index > pathNodes.Length -1)
@@ -151,7 +151,7 @@ public class PropertySystem
         }
         if(node != null)
         {
-            node.parent.childs.Remove(node.name);
+            //node.parent.childs.Remove(node.name);
             node.parent = null;
         }
     }

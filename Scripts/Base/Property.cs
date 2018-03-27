@@ -17,6 +17,7 @@ public enum EPropertyType
     EPropertyType_Matrix4x4,
     EPropertyType_Color,
     EPropertyType_String,
+    EPropertyType_PropertySet,
     EPropertyType_Object
 }
 
@@ -770,6 +771,44 @@ public class Matrix4x4Property : Property
     }
 
     public bool equals(Matrix4x4Property other)
+    {
+        return this.GetValue() == other.GetValue();
+    }
+
+    public override string ToString()
+    {
+        return GetValue().ToString();
+    }
+}
+
+
+public class PrpertySetProperty : Property
+{
+    public PrpertySetProperty(string name)
+        : base(name)
+    {
+        m_type = EPropertyType.EPropertyType_PropertySet;
+        m_value = 0;
+    }
+
+    public PrpertySetProperty(string name, string val)
+        : base(name)
+    {
+        m_type = EPropertyType.EPropertyType_PropertySet;
+        m_value = val;
+    }
+
+    public PropertySet GetValue()
+    {
+        return (PropertySet)m_value;
+    }
+
+    public void SetValue(PropertySet val)
+    {
+        m_value = val;
+    }
+
+    public bool equals(PrpertySetProperty other)
     {
         return this.GetValue() == other.GetValue();
     }

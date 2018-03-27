@@ -10,8 +10,6 @@ public class PropertySet
     List<Property> m_propertyList;
     //父属性集
     PropertySet m_parent;
-    /// 子属性集
-    Dictionary<string, PropertySet> m_childs;
     PropertySystem m_system;
 
 
@@ -43,30 +41,11 @@ public class PropertySet
         }
     }
 
-    public Dictionary<string, PropertySet> childs
-    {
-        get
-        {
-            return m_childs;
-        }
-    }
-
-    public PropertySet FindChild(string name)
-    {
-        if(m_childs.ContainsKey(name))
-        {
-            return m_childs[name];
-        }
-        return null;
-    }
-    
-
 
     public PropertySet(string name, PropertySystem sys)
     {
         m_propertyNameMap = new Dictionary<string, int>();
         m_propertyList = new List<Property>();
-        m_childs = new Dictionary<string, PropertySet>();
         m_name = name;
         m_system = sys;
     }

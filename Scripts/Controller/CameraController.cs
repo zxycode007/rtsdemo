@@ -8,7 +8,7 @@ public enum ECameraModeType
     DefaultCamera
 }
 
-public class CameraController : MonoBehaviour
+public class CameraController : BaseObject
 {
     CameraMode m_cameraMode;
 

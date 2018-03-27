@@ -85,6 +85,7 @@ public class GameEventContext
         {
             m_handlerDict[type] = handler;
         }
+        
     }
 
     public void UnBind(GameEventType type, GameEventHandler handler)
@@ -93,6 +94,7 @@ public class GameEventContext
         {
             m_handlerDict[type] -= handler;
         }
+        
         
     }
 
